@@ -1,18 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <clipPath id="circleClip">
-      <circle cx="50" cy="50" r="48" />
-    </clipPath>
+    <!-- ADVANCED TRUE CUTOUT FILTER -->
+    <!-- This filter targets the specific white/off-white background of the JPEG 
+         and forces its ALPHA channel to zero, creating a native SVG cutout. -->
+    <filter id="trueCutout" color-interpolation-filters="sRGB">
+      <!-- 1. Isolate the bright/white areas into an alpha mask -->
+      <feColorMatrix type="matrix" values="
+        0 0 0 0 0
+        0 0 0 0 0
+        0 0 0 0 0
+        1 1 1 0 -2.6
+      "/>
+      <!-- -2.6 is the threshold that specifically targets white/ivory -->
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="-1" intercept="1" />
+      </feComponentTransfer>
+      <!-- Combine the original image with this newly refined mask -->
+      <feComposite in="SourceGraphic" operator="in" />
+    </filter>
   </defs>
-  <!-- Background circle for potential transparent areas -->
-  <circle cx="50" cy="50" r="50" fill="#F7F5F0" />
+
   <image 
     href="/new-avatar.jpeg" 
     x="0" 
     y="0" 
     width="100" 
     height="100" 
-    clip-path="url(#circleClip)"
+    filter="url(#trueCutout)"
     style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;"
   />
 </svg>
