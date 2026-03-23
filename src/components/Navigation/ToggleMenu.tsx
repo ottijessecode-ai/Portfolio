@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import Link from 'next/link'
+import { EmailIcon, WhatsAppIcon, LinkedInIcon } from '../shared/SocialIcons'
 
 interface ToggleMenuProps {
   isOpen: boolean
@@ -160,7 +161,6 @@ export default function ToggleMenu({ isOpen, onClose }: ToggleMenuProps) {
           ))}
         </div>
 
-        {/* Contact Links at bottom of menu */}
         <div 
           className="menu-link-item"
           style={{ 
@@ -171,9 +171,15 @@ export default function ToggleMenu({ isOpen, onClose }: ToggleMenuProps) {
             paddingTop: '32px' 
           }}
         >
-          <a href="mailto:ottijessecode@gmail.com" className="label" style={{ textDecoration: 'none' }}>Email</a>
-          <a href="https://wa.me/2348162225686" target="_blank" rel="noopener noreferrer" className="label" style={{ textDecoration: 'none' }}>WhatsApp</a>
-          <a href="https://linkedin.com/in/jesse-otti" target="_blank" rel="noopener noreferrer" className="label" style={{ textDecoration: 'none' }}>LinkedIn</a>
+          <a href="mailto:ottijessecode@gmail.com" className="label" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <EmailIcon size={14} /> Email
+          </a>
+          <a href="https://wa.me/2348162225686" target="_blank" rel="noopener noreferrer" className="label" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <WhatsAppIcon size={14} /> WhatsApp
+          </a>
+          <a href="https://linkedin.com/in/jesse-otti" target="_blank" rel="noopener noreferrer" className="label" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <LinkedInIcon size={14} /> LinkedIn
+          </a>
         </div>
       </div>
     </>

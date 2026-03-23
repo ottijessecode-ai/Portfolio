@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
+import { EmailIcon, WhatsAppIcon } from '@/components/shared/SocialIcons'
 
 export default function ContactPage() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -136,13 +137,13 @@ export default function ContactPage() {
         {/* Direct Contacts */}
         <div className="anim-up" style={{ marginTop: '100px', paddingBottom: '100px', display: 'flex', flexDirection: 'column', gap: '24px', alignItems: 'center' }}>
           <p className="label">Prefer direct contact?</p>
-          <div style={{ display: 'flex', gap: '32px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <a href="mailto:ottijessecode@gmail.com" className="body-lg" style={{ textDecoration: 'none', fontWeight: 600, color: 'var(--text-primary)' }}>
-              ottijessecode@gmail.com
+          <div style={{ display: 'flex', gap: '48px', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <a href="mailto:ottijessecode@gmail.com" className="body-lg" style={{ textDecoration: 'none', fontWeight: 600, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <EmailIcon size={20} /> ottijessecode@gmail.com
             </a>
             <span style={{ color: 'rgba(26,24,21,0.2)' }}>|</span>
-            <a href="https://wa.me/2348162225686" target="_blank" rel="noopener noreferrer" className="body-lg" style={{ textDecoration: 'none', fontWeight: 600, color: 'var(--text-primary)' }}>
-              +234 816 222 5686
+            <a href="https://wa.me/2348162225686" target="_blank" rel="noopener noreferrer" className="body-lg" style={{ textDecoration: 'none', fontWeight: 600, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <WhatsAppIcon size={20} /> WhatsApp
             </a>
           </div>
         </div>
