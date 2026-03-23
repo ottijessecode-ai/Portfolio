@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { EmailIcon, WhatsAppIcon } from '../shared/SocialIcons'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -56,11 +57,11 @@ export default function CTASection() {
         </h2>
 
         <div className="cta-el" style={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a href="mailto:ottijessecode@gmail.com" className="btn-primary" style={{ fontSize: '14px', padding: '20px 48px' }}>
-            Email Me
+          <a href="mailto:ottijessecode@gmail.com" className="btn-primary" style={{ padding: '20px 24px', borderRadius: '50px' }}>
+            <EmailIcon size={24} />
           </a>
-          <a href="https://wa.me/2348162225686" target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ fontSize: '14px', padding: '20px 48px' }}>
-            WhatsApp
+          <a href="https://wa.me/2348162225686" target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ padding: '20px 24px', borderRadius: '50px' }}>
+            <WhatsAppIcon size={24} />
           </a>
         </div>
       </div>
