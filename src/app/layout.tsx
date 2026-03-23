@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   title: 'Jesse Otti | Premium Web Design',
   description: 'High-converting, visually stunning websites for ambitious brands.',
   icons: {
-    icon: '/new-avatar.jpeg',
-    shortcut: '/new-avatar.jpeg',
-    apple: '/new-avatar.jpeg'
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg'
   }
 }
 
