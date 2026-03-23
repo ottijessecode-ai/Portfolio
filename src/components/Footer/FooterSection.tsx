@@ -51,11 +51,6 @@ export default function FooterSection() {
                onMouseLeave={e => e.currentTarget.style.color = 'rgba(247,245,240,0.6)'}>
               <WhatsAppIcon size={16} /> WhatsApp
             </a>
-            <a href="https://linkedin.com/in/jesse-otti" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(247,245,240,0.6)', textDecoration: 'none', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', transition: 'color 0.3s ease' }}
-               onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
-               onMouseLeave={e => e.currentTarget.style.color = 'rgba(247,245,240,0.6)'}>
-              <LinkedInIcon size={16} /> LinkedIn
-            </a>
           </nav>
         </div>
         <div className="footer-el" style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '32px', fontSize: '12px', color: 'rgba(247,245,240,0.4)', letterSpacing: '0.1em' }}>

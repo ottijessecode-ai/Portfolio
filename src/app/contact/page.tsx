@@ -141,7 +141,6 @@ export default function ContactPage() {
             <a href="mailto:ottijessecode@gmail.com" className="body-lg" style={{ textDecoration: 'none', fontWeight: 600, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '12px' }}>
               <EmailIcon size={20} /> ottijessecode@gmail.com
             </a>
-            <span style={{ color: 'rgba(26,24,21,0.2)' }}>|</span>
             <a href="https://wa.me/2348162225686" target="_blank" rel="noopener noreferrer" className="body-lg" style={{ textDecoration: 'none', fontWeight: 600, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '12px' }}>
               <WhatsAppIcon size={20} /> WhatsApp
             </a>

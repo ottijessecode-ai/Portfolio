@@ -177,9 +177,6 @@ export default function ToggleMenu({ isOpen, onClose }: ToggleMenuProps) {
           <a href="https://wa.me/2348162225686" target="_blank" rel="noopener noreferrer" className="label" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <WhatsAppIcon size={14} /> WhatsApp
           </a>
-          <a href="https://linkedin.com/in/jesse-otti" target="_blank" rel="noopener noreferrer" className="label" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <LinkedInIcon size={14} /> LinkedIn
-          </a>
         </div>
       </div>
     </>
