@@ -1,0 +1,216 @@
+/* ============================================
+   PREMIUM WARM DESIGN SYSTEM
+   ============================================ */
+
+   *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  :root {
+    /* STRICT 3-COLOR PALETTE */
+    --bg-primary: #F7F5F0;    /* Warm Ivory / White */
+    --bg-secondary: #EBE7DF;  /* Slightly darker warm white for depth */
+    --text-primary: #1A1815;  /* Deep warm charcoal / black */
+    --accent: #C45A3E;        /* Warm Terracotta / Burnt Orange */
+    
+    /* Typography */
+    --font-primary: var(--font-montserrat), sans-serif;
+    --font-serif: var(--font-cormorant), serif;
+  
+    /* Easing */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    overflow-x: hidden;
+  }
+  
+  /* ======================== SCROLLBAR ======================== */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg-primary); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); }
+  
+  /* ======================== CUSTOM CURSOR ======================== */
+  .cursor {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s var(--ease-out-expo), height 0.3s var(--ease-out-expo);
+  }
+  
+  .cursor-follower {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(196, 90, 62, 0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* ======================== LAYOUT ======================== */
+  .container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  
+  /* ======================== TYPOGRAPHY ======================== */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+  
+  .display-hero {
+    font-size: clamp(60px, 12vw, 150px);
+    line-height: 0.85;
+    font-weight: 800;
+  }
+  
+  .display-lg {
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 0.9;
+    font-weight: 800;
+  }
+  
+  .serif-italic {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  
+  .body-lg {
+    font-size: clamp(16px, 1.5vw, 22px);
+    line-height: 1.6;
+    font-weight: 400;
+    color: rgba(26, 24, 21, 0.7);
+  }
+  
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  
+  /* ======================== BUTTONS ======================== */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 16px 36px;
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 100px; /* PILL-SHAPED CTA */
+    text-decoration: none;
+    transition: all 0.4s var(--ease-out-expo);
+    border: 1px solid var(--text-primary);
+  }
+  
+  .btn-primary:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    padding: 16px 36px;
+    background: transparent;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 100px; /* PILL-SHAPED CTA */
+    text-decoration: none;
+    border: 1px solid rgba(26, 24, 21, 0.2);
+    transition: all 0.4s var(--ease-out-expo);
+  }
+  
+  .btn-outline:hover {
+    border-color: var(--text-primary);
+  }
+  
+  /* ======================== UTILS ======================== */
+  .section-pad {
+    padding: 140px 0;
+  }
+  
+  .tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border: 1px solid rgba(26, 24, 21, 0.1);
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99000;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  /* ======================== MOBILE RESPONSIVENESS ======================== */
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 24px !important;
+    }
+    .section-pad {
+      padding: 80px 0 !important;
+    }
+    
+    /* Specific Section Overrides */
+    .svc-header {
+      position: relative !important;
+      top: 0 !important;
+      margin-bottom: 40px !important;
+    }
+    
+    /* Layout Overrides for ALL Grids */
+    div[style*="display: grid"],
+    div[style*="display:grid"] {
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+    }
+
+    /* Navbar Overrides */
+    nav {
+      padding: 16px 20px !important;
+    }
+    .hire-me-btn {
+      display: none !important;
+    }
+  }
