@@ -83,9 +83,18 @@ export default function WorkSection() {
         <div className="work-list" style={{ display: 'flex', flexDirection: 'column', gap: '120px' }}>
           {projects.map((p, i) => (
             <div key={p.num} className="work-card-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-              
+
               {/* Info Row */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '1px solid rgba(26,24,21,0.05)', paddingBottom: '20px' }}>
+              <div
+                className="work-info-row"
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'flex-end',
+                  borderBottom: '1px solid rgba(26,24,21,0.05)',
+                  paddingBottom: '20px'
+                }}
+              >
                 <div>
                   <span className="serif-italic" style={{ fontSize: '24px', color: 'rgba(26,24,21,0.4)', display: 'block', marginBottom: '8px' }}>
                     {p.num}
@@ -93,15 +102,15 @@ export default function WorkSection() {
                   <h3 style={{ fontSize: '48px', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1, marginBottom: '12px' }}>
                     {p.title}
                   </h3>
-                  <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center' }}>
                     <span className="label">{p.category}</span>
-                    <span style={{ color: 'rgba(26,24,21,0.3)' }}>|</span>
-                    <p style={{ fontFamily: 'var(--font-primary)', fontSize: '15px', color: 'rgba(26,24,21,0.6)', maxWidth: '500px' }}>
+                    <span style={{ color: 'rgba(26,24,21,0.3)' }} className="mobile-hide">|</span>
+                    <p className="work-description" style={{ fontFamily: 'var(--font-primary)', fontSize: '15px', color: 'rgba(26,24,21,0.6)', maxWidth: '500px' }}>
                       {p.description}
                     </p>
                   </div>
                 </div>
-                
+
                 <a
                   href={p.url}
                   target="_blank"
@@ -113,16 +122,22 @@ export default function WorkSection() {
                 </a>
               </div>
 
-              {/* Live Iframe Display Mockup */}
-              <div 
+              {/* Live Iframe Display Mockup - Clickable */}
+              <a
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   width: '100%',
                   aspectRatio: '16/9',
-                  background: '#e0e0e0', // Base mockup color
+                  background: '#e0e0e0',
                   borderRadius: '12px',
                   overflow: 'hidden',
                   boxShadow: '0 40px 80px rgba(26,24,21,0.08)',
-                  position: 'relative'
+                  position: 'relative',
+                  display: 'block',
+                  cursor: 'pointer',
+                  textDecoration: 'none'
                 }}
               >
                 {/* Mock Browser Header */}
@@ -130,14 +145,14 @@ export default function WorkSection() {
                   <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ff5f56' }} />
                   <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ffbd2e' }} />
                   <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#27c93f' }} />
-                  
+
                   {/* Mock URL bar */}
-                  <div style={{ 
-                    flex: 1, 
-                    margin: '0 24px', 
-                    background: '#fff', 
-                    height: '24px', 
-                    borderRadius: '4px', 
+                  <div style={{
+                    flex: 1,
+                    margin: '0 24px',
+                    background: '#fff',
+                    height: '24px',
+                    borderRadius: '4px',
                     border: '1px solid #ddd',
                     display: 'flex',
                     alignItems: 'center',
@@ -151,18 +166,18 @@ export default function WorkSection() {
                 </div>
 
                 {/* Secure iframe embedding the site */}
-                <iframe 
+                <iframe
                   src={p.url}
                   style={{
                     width: '100%',
                     height: 'calc(100% - 40px)',
                     border: 'none',
-                    pointerEvents: 'none' // Disable interactions so the user can easily scroll physically past the iframe
+                    pointerEvents: 'none' /* Ensures the click passes to the <a> tag */
                   }}
                   title={p.title}
                   sandbox="allow-scripts allow-same-origin"
                 />
-              </div>
+              </a>
             </div>
           ))}
         </div>

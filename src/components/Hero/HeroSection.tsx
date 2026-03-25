@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HeroTicker from './HeroTicker'
-import AvatarCanvas from '../Avatar/AvatarCanvas'
+import AvatarCharacter from '../Avatar/AvatarCharacter'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -15,7 +15,6 @@ export default function HeroSection() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.2 })
 
-      // Elegant and safe fade-up for main headline words without relying on overflow-box clipping
       tl.fromTo('.hero-word', {
         y: 40,
         opacity: 0,
@@ -26,149 +25,116 @@ export default function HeroSection() {
         ease: 'power3.out',
         stagger: 0.15,
       })
-      .from('.hero-sub-text', {
-        opacity: 0,
-        y: 30,
-        duration: 1,
-        ease: 'power3.out',
-      }, '-=0.8')
-      .from('.hero-cta-group', {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        ease: 'power3.out',
-      }, '-=0.7')
-      .from('.hero-badge', {
-        opacity: 0,
-        scale: 0.8,
-        duration: 1,
-        ease: 'back.out(1.2)',
-      }, '-=0.6')
-
-      // Removing the volatile 'yPercent' parallax scroll effect.
-      // It was aggressively shifting position coordinates against the Avatar on mobile, severely ruining the presentation scaling as flagged by the user.
+        .from('.hero-sub-text-top', {
+          opacity: 0,
+          y: 30,
+          duration: 1,
+          ease: 'power3.out',
+        }, '-=0.8')
+        .from('.hero-info-row', {
+          opacity: 0,
+          y: 30,
+          duration: 1,
+          ease: 'power3.out',
+        }, '-=0.8')
+        .from('.hero-cta-group', {
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
+          ease: 'power3.out',
+        }, '-=0.7')
+        .from('.hero-badge', {
+          opacity: 0,
+          scale: 0.8,
+          duration: 1,
+          ease: 'back.out(1.2)',
+        }, '-=0.6')
     }, sectionRef)
 
     return () => ctx.revert()
   }, [])
 
   return (
-    <section
-      id="hero"
-      ref={sectionRef}
-      style={{
-        position: 'relative',
-        minHeight: '120svh', // Increased to accommodate the massive typography visibility
-        background: 'var(--bg-primary)',
-        display: 'flex',
-        flexDirection: 'column',
-        overflow: 'hidden',
-        paddingTop: '100px',
-      }}
-    >
-      {/* Noise overlay already on page level */}
+    <section id="hero" ref={sectionRef} className="hero-section">
+      <div className="hero-heading-container">
+        {/* Sup headline */}
+        <div
+          className="hero-sub-text-top"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '12px',
+            marginBottom: '20px',
+          }}
+        >
+          <div
+            style={{
+              width: '6px',
+              height: '6px',
+              borderRadius: '50%',
+              background: 'var(--accent)',
+              animation: 'blink 2s ease-in-out infinite',
+            }}
+          />
+          <span className="label">Crafting Digital Excellence</span>
+        </div>
 
-      {/* AVATAR HUGE FOREGROUND ELEMENT */}
-      <div style={{
-        position: 'absolute',
-        bottom: '0%',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: 'clamp(300px, 50vw, 850px)', /* Scaled down for mobile safety */
-        height: '80%',
-        zIndex: 5, /* Placed deliberately in front of the text */
-        pointerEvents: 'none',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'flex-end',
-      }}>
-        <AvatarCanvas />
+        <h1
+          className="hero-word"
+          style={{
+            fontSize: 'clamp(50px, 8vw, 120px)',
+            lineHeight: 1,
+            fontWeight: 800,
+            color: 'var(--text-primary)',
+            display: 'block',
+            letterSpacing: '-0.02em',
+            margin: 0
+          }}
+        >
+          HI, I'M
+        </h1>
+
+        <h2
+          className="hero-word"
+          style={{
+            fontSize: 'clamp(80px, 16vw, 250px)',
+            lineHeight: 0.85,
+            fontWeight: 800,
+            color: 'var(--text-primary)',
+            display: 'block',
+            letterSpacing: '-0.04em',
+            margin: 0
+          }}
+        >
+          JESSE
+        </h2>
+      </div>
+
+      <div className="hero-avatar-container">
+        <AvatarCharacter />
       </div>
 
       <div
         className="hero-content-wrap"
         style={{
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end', /* Pushes the write-up and CTAs exclusively to the bottom */
-          alignItems: 'flex-start',
-          position: 'relative',
-          zIndex: 2, 
-          padding: '20px 5vw 60px', /* Generous bottom padding padding */
-          textAlign: 'center',
+          width: '100%',
+          padding: '20px 5vw 60px',
+          zIndex: 10,
         }}
       >
-        <div style={{ position: 'absolute', top: '70px', left: 0, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 1 }}>
-          {/* Sup headline */}
+        <div
+          className="hero-info-row"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            gap: '30px',
+          }}
+        >
           <div
             className="hero-sub-text"
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '12px',
-              marginBottom: '20px',
-            }}
-          >
-            <div
-              style={{
-                width: '6px',
-                height: '6px',
-                borderRadius: '50%',
-                background: 'var(--accent)',
-                animation: 'blink 2s ease-in-out infinite',
-              }}
-            />
-            <span className="label">Crafting Digital Excellence</span>
-          </div>
-
-          <h1
-            className="hero-word"
-            style={{ 
-              fontSize: 'clamp(50px, 8vw, 120px)',
-              lineHeight: 1,
-              fontWeight: 800,
-              color: 'var(--text-primary)', 
-              display: 'block',
-              letterSpacing: '-0.02em',
-              margin: 0
-            }}
-          >
-            HI, I'M
-          </h1>
-
-          <h2
-            className="hero-word"
-            style={{ 
-              fontSize: 'clamp(80px, 16vw, 250px)',
-              lineHeight: 0.85,
-              fontWeight: 800,
-              color: 'var(--text-primary)', 
-              display: 'block',
-              letterSpacing: '-0.04em',
-              margin: 0
-            }}
-          >
-            JESSE
-          </h2>
-        </div>
-
-        {/* Subtitle & CTAs - Stacked tightly on the bottom left! */}
-        <div 
-          className="hero-info-row"
-          style={{ 
-            display: 'flex',
-            flexDirection: 'column', /* Stacks vertically */
-            alignItems: 'flex-start', /* Pinned entirely left */
-            gap: '30px', /* Gap between paragraph and buttons */
-            zIndex: 10,
-          }}
-        >
-          {/* Subtitle / Description */}
-          <div
-            className="hero-sub-text"
-            style={{ 
               textAlign: 'left',
               display: 'flex',
               flexDirection: 'column',
@@ -181,7 +147,6 @@ export default function HeroSection() {
             </p>
           </div>
 
-          {/* CTAs moved precisely below the write-up */}
           <div
             className="hero-cta-group"
             style={{
@@ -190,10 +155,10 @@ export default function HeroSection() {
               flexWrap: 'wrap'
             }}
           >
-            <a href="#contact" className="btn-primary" style={{ padding: '20px 40px', fontSize: '13px', borderRadius: '100px', whiteSpace: 'nowrap' }}>
+            <a href="#contact" className="btn-primary">
               Contact Me →
             </a>
-            <a href="#work" className="btn-outline" style={{ padding: '20px 40px', fontSize: '13px', borderRadius: '100px', border: 'none', whiteSpace: 'nowrap' }}>
+            <a href="#work" className="btn-outline" style={{ border: 'none' }}>
               Explore Work ↓
             </a>
           </div>
@@ -258,9 +223,6 @@ export default function HeroSection() {
           />
         </div>
       </div>
-
-      {/* Clean border line at the bottom instead of ticker (for now, clean minimal look) */}
-      <div style={{ position: 'absolute', bottom: 1, left: '5%', right: '5%', height: '1px', background: 'rgba(26,24,21,0.1)' }} />
     </section>
   )
 }
