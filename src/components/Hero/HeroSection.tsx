@@ -112,7 +112,16 @@ export default function HeroSection() {
       </div>
 
       {/* ISOLATED AVATAR CONTAINER */}
-      <div className="hero-avatar-container" style={{ minHeight: '400px', maxHeight: '70vh', position: 'relative', overflow: 'hidden' }}>
+      <div
+        className="hero-avatar-container"
+        style={{
+          minHeight: '500px',
+          height: 'clamp(500px, 80vh, 1000px)',
+          maxHeight: '85vh',
+          position: 'relative',
+          overflow: 'hidden'
+        }}
+      >
         <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
           <AvatarCanvas />
         </div>
@@ -122,7 +131,7 @@ export default function HeroSection() {
         className="hero-content-wrap"
         style={{
           width: '100%',
-          padding: '40px 5vw 60px', /* Increased top padding for the content below avatar */
+          padding: '40px 5vw 100px',
           zIndex: 10,
         }}
       >
@@ -179,6 +188,7 @@ export default function HeroSection() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          marginTop: '40px' /* Extra space for mobile layering logic */
         }}
       >
         <div

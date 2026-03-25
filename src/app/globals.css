@@ -256,6 +256,19 @@ h6 {
     max-width: 100%;
   }
 
+  .hero-badge {
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+    margin-top: 60px !important;
+    align-self: flex-start !important;
+    padding-left: 5vw !important;
+  }
+
+  .rotating-badge {
+    animation: spin 10s linear infinite;
+  }
+
   .work-info-row {
     flex-direction: column !important;
     align-items: flex-start !important;
@@ -288,4 +301,18 @@ h6 {
   .hire-me-btn {
     display: none !important;
   }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotating-badge {
+  animation: spin 12s linear infinite;
 }
