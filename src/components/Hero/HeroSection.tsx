@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HeroTicker from './HeroTicker'
-import AvatarCharacter from '../Avatar/AvatarCharacter'
+import AvatarCanvas from '../Avatar/AvatarCanvas'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -55,7 +55,7 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section id="hero" ref={sectionRef} className="hero-section">
+    <section id="hero" ref={sectionRef} className="hero-section" style={{ minHeight: 'auto', paddingBottom: '80px' }}>
       <div className="hero-heading-container">
         {/* Sup headline */}
         <div
@@ -111,15 +111,18 @@ export default function HeroSection() {
         </h2>
       </div>
 
-      <div className="hero-avatar-container">
-        <AvatarCharacter />
+      {/* ISOLATED AVATAR CONTAINER */}
+      <div className="hero-avatar-container" style={{ minHeight: '400px', maxHeight: '70vh', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
+          <AvatarCanvas />
+        </div>
       </div>
 
       <div
         className="hero-content-wrap"
         style={{
           width: '100%',
-          padding: '20px 5vw 60px',
+          padding: '40px 5vw 60px', /* Increased top padding for the content below avatar */
           zIndex: 10,
         }}
       >
